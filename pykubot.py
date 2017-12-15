@@ -2,7 +2,7 @@ import discord
 import string
 from sylcnt import *
 punct = string.punctuation
-
+trail = re.compile(r"\w+Id\b")
 client = discord.Client()
 
 conf = open("pyku.conf", "r")
@@ -30,6 +30,8 @@ async def on_message(message):
                 if nsyl(haiku0[x].strip(punct))[0] == 0:
                     syb0 += gsyl(haiku0[x].strip(punct))
                     print("guess:" + haiku0[x] + ":" + str(gsyl(haiku0[x].strip(punct))))
+                    if len(trail.findall(haiku0[x].strip(punct))) >= 1:
+                        syb0 -= 1
                 x += 1
             print("total 0")
             print(syb0)
@@ -41,6 +43,8 @@ async def on_message(message):
                 if nsyl(haiku1[x].strip(punct))[0] == 0:
                     syb1 += gsyl(haiku1[x].strip(punct))
                     print("guess:" + haiku1[x] + ":" + str(gsyl(haiku1[x].strip(punct))))
+                    if len(trail.findall(haiku1[x].strip(punct))) >= 1:
+                        syb1 -= 1
                 x += 1
             print("total 1")
             print(syb1)
@@ -52,6 +56,8 @@ async def on_message(message):
                 if nsyl(haiku2[x].strip(punct))[0] == 0:
                     syb2 += gsyl(haiku2[x].strip(punct))
                     print("guess:" + haiku2[x] + ":" +  str(gsyl(haiku2[x].strip(punct))))
+                    if len(trail.findall(haiku2[x].strip(punct))) >= 1:
+                        syb2 -= 1
                 x += 1
             print("total 2")
             print(syb2)
