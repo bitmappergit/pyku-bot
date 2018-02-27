@@ -1,7 +1,7 @@
 language: python
 install:
-        - sudo pip install -U discord.py
-        - sudo pip install -U nltk
-        - python ./installsetup.py
+        - sudo pip3 install -U discord.py
+        - sudo pip3 install -U nltk
+        - python3 ./installsetup.py
 script:
-        - python ./pykubot.py
+        - python3 ./pykubot.py
