@@ -1,7 +1,7 @@
 from nltk.corpus import cmudict
 import re
 d = cmudict.dict()
-pat = re.compile(r"/[aiouy]+e*|e(?!d$|ly).|[td]ed|le$/g")
+pat = re.compile(r"/[aiouyAEIOU]+[eE]*|[eE](?![dD]$|([ly][LY])).|[tdTD]([ed][ED])|([le][LE])$/g")
 def nsyl(word):
     try:
         return [len(list(y for y in x if y[-1].isdigit())) for x in d[word.lower()]]
